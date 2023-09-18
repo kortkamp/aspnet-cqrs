@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{90F468EA-41B6-4549-9646-5AF636D773C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CqrsPoc.Api", "src\CqrsPoc.Api\CqrsPoc.Api.csproj", "{A6A8C9C3-2543-4A75-8D3F-331C6278598F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syslog.Api", "src\Syslog.Api\Syslog.Api.csproj", "{A6A8C9C3-2543-4A75-8D3F-331C6278598F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syslog.Domain", "src\Syslog.Domain\Syslog.Domain.csproj", "{B70E3CF8-8265-4633-9F1E-1333CE0E07DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,8 +22,13 @@ Global
 		{A6A8C9C3-2543-4A75-8D3F-331C6278598F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6A8C9C3-2543-4A75-8D3F-331C6278598F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6A8C9C3-2543-4A75-8D3F-331C6278598F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B70E3CF8-8265-4633-9F1E-1333CE0E07DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B70E3CF8-8265-4633-9F1E-1333CE0E07DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B70E3CF8-8265-4633-9F1E-1333CE0E07DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B70E3CF8-8265-4633-9F1E-1333CE0E07DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A6A8C9C3-2543-4A75-8D3F-331C6278598F} = {90F468EA-41B6-4549-9646-5AF636D773C8}
+		{B70E3CF8-8265-4633-9F1E-1333CE0E07DF} = {90F468EA-41B6-4549-9646-5AF636D773C8}
 	EndGlobalSection
 EndGlobal
