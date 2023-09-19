@@ -1,4 +1,4 @@
-using System.Reflection;
+using MediatR;
 using Syslog.Api.Providers.CodeGenerator;
 
 namespace Syslog.Api.IoC
@@ -7,7 +7,7 @@ namespace Syslog.Api.IoC
     {
         public static void RegisterService(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            services.AddMediatR(typeof(Program));
 
             services.AddScoped<ICodeGenerator, CodeGeneratorRandom>();
         }
