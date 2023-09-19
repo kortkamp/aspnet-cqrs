@@ -9,7 +9,7 @@ namespace Syslog.Api.IoC
         {
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
-            services.AddScoped<ICodeGenerator, CodeGenerator>();
+            services.AddScoped<ICodeGenerator, CodeGeneratorRandom>();
         }
     }
 }
