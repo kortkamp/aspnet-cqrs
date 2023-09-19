@@ -1,6 +1,5 @@
-using CqrsPoc.Domain.Entities;
-
-namespace CqrsPoc.Domain.Interfaces.Repositories
+using Syslog.Domain.Entities;
+namespace Syslog.Domain.Interfaces.Repositories
 {
     public interface IDeliveryRepository
     {

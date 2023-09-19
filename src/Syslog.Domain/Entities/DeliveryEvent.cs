@@ -1,6 +1,6 @@
-using CqrsPoc.Domain.Enums;
+using Syslog.Domain.Enums;
 
-namespace CqrsPoc.Domain.Entities
+namespace Syslog.Domain.Entities
 {
     public readonly struct DeliveryEvent
     {

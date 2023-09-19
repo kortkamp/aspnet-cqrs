@@ -1,4 +1,4 @@
-namespace CqrsPoc.Domain.Enums
+namespace Syslog.Domain.Enums
 {
     public enum DeliveryState
     {
