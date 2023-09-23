@@ -6,12 +6,12 @@ using Syslog.Api.Commands.Responses;
 
 namespace Syslog.Api.Commands.Requests
 {
-    public class CreateDeliveryRequest : IRequest<CreateDeliveryResponse>
+    public class CollectDeliveryRequest : IRequest<CollectDeliveryResponse>
     {
         [Required]
-        public required string OrderId { get; set; }
+        public Guid DeliveryId { get; set; }
 
         [Required]
-        public required string Address { get; set; }
+        public Guid DeliverymanId { get; set; }
     }
 }

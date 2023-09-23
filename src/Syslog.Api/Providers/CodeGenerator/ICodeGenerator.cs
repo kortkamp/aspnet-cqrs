@@ -1,4 +1,4 @@
-namespace Syslog.Api.Providers.CodeGenerator
+﻿namespace Syslog.Api.Providers.CodeGenerator
 {
     public interface ICodeGenerator
     {

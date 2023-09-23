@@ -1,5 +1,7 @@
-using MediatR;
+﻿using MediatR;
+
 using Microsoft.AspNetCore.Mvc;
+
 using Syslog.Api.Commands.Requests;
 using Syslog.Api.Commands.Responses;
 
@@ -9,24 +11,23 @@ namespace Syslog.Api.Controllers
     [Route("api/deliveries")]
     public class DeliveryController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        private readonly IMediator mediator;
+
         public DeliveryController(IMediator mediator)
         {
-            _mediator = mediator;
+            this.mediator = mediator;
         }
 
         [HttpPost]
-        public async Task<ActionResult<CreateDeliveryResponse>> Create(
-            CreateDeliveryRequest command
-        )
+        public async Task<ActionResult<CreateDeliveryResponse>> Create(CreateDeliveryRequest command)
         {
-            var response = await _mediator.Send(command);
+            var response = await mediator.Send(command);
             return Ok(response);
         }
 
         [HttpGet]
         [Route("")]
-        public async Task<ActionResult> Get()
+        public ActionResult Get()
         {
             return Ok("ok");
         }

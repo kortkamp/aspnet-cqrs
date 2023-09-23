@@ -1,4 +1,4 @@
-using Syslog.Api.IoC;
+﻿using Syslog.Api.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +9,7 @@ builder.Services.RegisterService(builder.Configuration);
 var app = builder.Build();
 
 app.MapControllers();
+
 app.MapGet("/", () => "Hello World!");
 
 app.Run();

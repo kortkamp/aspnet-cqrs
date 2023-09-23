@@ -1,13 +1,9 @@
-using Syslog.Domain.Enums;
+﻿using Syslog.Domain.Enums;
 
 namespace Syslog.Domain.Entities
 {
     public readonly struct DeliveryEvent
     {
-        public Guid Id { get; }
-        public DeliveryState State {get; }
-        public DateTime Date { get; }
-
         public DeliveryEvent(DeliveryState state)
         {
             Id = Guid.NewGuid();
@@ -21,5 +17,11 @@ namespace Syslog.Domain.Entities
             State = state;
             Date = date;
         }
+
+        public Guid Id { get; }
+
+        public DeliveryState State { get; }
+
+        public DateTime Date { get; }
     }
 }
