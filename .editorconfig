@@ -368,6 +368,8 @@ dotnet_naming_style.s_camelcase.required_suffix =
 dotnet_naming_style.s_camelcase.word_separator =
 dotnet_naming_style.s_camelcase.capitalization = camel_case
 
+
+
 #### StyleCop Rules ####
 
 #The file header is missing or not located at the top of the file.SA1633
@@ -390,13 +392,7 @@ dotnet_diagnostic.SA1602.severity = none
 dotnet_diagnostic.SA1309.severity = none
 # All diagnostics of XML documentation comments has been disabled due to the current project configuration.
 dotnet_diagnostic.SA0001.severity = none
-# Prefix local calls with thisSA1101
+# Prefix local calls with this
 dotnet_diagnostic.SA1101.severity = none
-
-dotnet_diagnostic.S2094.severity = none
-dotnet_diagnostic.S4487.severity = none
-
-dotnet_diagnostic.CA1062.severity = none
-
 
 

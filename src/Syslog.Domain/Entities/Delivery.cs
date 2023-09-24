@@ -4,7 +4,10 @@ namespace Syslog.Domain.Entities
 {
     public class Delivery
     {
-        public Delivery(string code, string orderId, string address)
+        public Delivery(
+            string code,
+            string orderId,
+            string address)
         {
             Id = Guid.NewGuid();
             Code = code;
