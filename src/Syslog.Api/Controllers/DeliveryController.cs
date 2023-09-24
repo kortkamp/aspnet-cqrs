@@ -11,17 +11,17 @@ namespace Syslog.Api.Controllers
     [Route("api/deliveries")]
     public class DeliveryController : ControllerBase
     {
-        private readonly IMediator mediator;
+        private readonly IMediator _mediator;
 
         public DeliveryController(IMediator mediator)
         {
-            this.mediator = mediator;
+            this._mediator = mediator;
         }
 
         [HttpPost]
         public async Task<ActionResult<CreateDeliveryResponse>> Create(CreateDeliveryRequest command)
         {
-            var response = await mediator.Send(command);
+            var response = await _mediator.Send(command);
             return Ok(response);
         }
 
