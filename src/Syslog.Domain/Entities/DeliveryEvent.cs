@@ -2,7 +2,7 @@
 
 namespace Syslog.Domain.Entities
 {
-    public readonly struct DeliveryEvent
+    public class DeliveryEvent
     {
         public DeliveryEvent(DeliveryState state)
         {
