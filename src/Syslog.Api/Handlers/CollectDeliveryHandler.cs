@@ -1,30 +1,39 @@
 ﻿using MediatR;
 
+using Syslog.Api.ApplicationExceptions;
 using Syslog.Api.Commands.Requests;
 using Syslog.Api.Commands.Responses;
-using Syslog.Api.Providers.CodeGenerator;
+using Syslog.Domain.Interfaces.Repositories;
 
 namespace Syslog.Api.DeliveryContext.Handlers
 {
     public class CollectDeliveryHandler
         : IRequestHandler<CollectDeliveryRequest, CollectDeliveryResponse>
     {
-        private readonly ICodeGenerator codeGenerator;
-        private readonly IPublisher publisher;
+        private readonly IPublisher _publisher;
+        private readonly IDeliveryRepository _deliveryRepository;
 
-        public CollectDeliveryHandler(ICodeGenerator codeGenerator, IPublisher publisher)
+        public CollectDeliveryHandler(IPublisher publisher, IDeliveryRepository deliveryRepository)
         {
-            this.publisher = publisher;
-            this.codeGenerator = codeGenerator;
+            _publisher = publisher;
+            _deliveryRepository = deliveryRepository;
         }
 
-        public Task<CollectDeliveryResponse> Handle(
+        public async Task<CollectDeliveryResponse> Handle(
             CollectDeliveryRequest request,
             CancellationToken cancellationToken)
         {
-            var result = new CollectDeliveryResponse { Id = Guid.NewGuid() };
+            var delivery = await _deliveryRepository.GetById(request.DeliveryId) ?? throw new EntityNotFoundException();
 
-            return Task.FromResult(result);
+            var collectEvent = delivery.Collect(request.DeliverymanId);
+
+            await _deliveryRepository.Save(delivery);
+
+            return new CollectDeliveryResponse()
+            {
+                Id = delivery.Id,
+                Date = collectEvent.Date,
+            };
         }
     }
 }

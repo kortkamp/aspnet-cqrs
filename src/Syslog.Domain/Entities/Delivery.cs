@@ -42,25 +42,27 @@ namespace Syslog.Domain.Entities
 
         public Guid Id { get; private set; }
 
-        public string Code { get; private set; }
-
-        public DateTime CreationDate { get; private set; }
-
-        public string OrderId { get; private set; }
-
-        public string Address { get; private set; }
-
         public DeliveryState State { get; private set; }
 
         public IList<DeliveryEvent> Events { get; private set; }
 
+        public DateTime CreationDate { get; private set; }
+
         public Guid? DeliverymanId { get; private set; }
+
+        // sender data
+        public string Code { get; private set; }
+
+        public string OrderId { get; private set; }
+
+        // destination data
+        public string Address { get; private set; }
 
         public DateTime? DeliveredAt { get; private set; }
 
         public string? DeliveredTo { get; private set; }
 
-        public bool Collect(Guid deliveryManId)
+        public DeliveryEvent Collect(Guid deliveryManId)
         {
             if (State != DeliveryState.Awaiting)
             {
@@ -69,11 +71,10 @@ namespace Syslog.Domain.Entities
             }
 
             DeliverymanId = deliveryManId;
-            UpdateState(DeliveryState.InRoute);
-            return true;
+            return UpdateState(DeliveryState.InRoute);
         }
 
-        public bool Finish(string receiver)
+        public DeliveryEvent Finish(string receiver)
         {
             if (State != DeliveryState.InRoute)
             {
@@ -83,16 +84,12 @@ namespace Syslog.Domain.Entities
 
             DeliveredAt = DateTime.Now;
             DeliveredTo = receiver;
-            UpdateState(DeliveryState.Delivered);
-
-            return true;
+            return UpdateState(DeliveryState.Delivered);
         }
 
-        public bool Cancel()
+        public DeliveryEvent Cancel()
         {
-            UpdateState(DeliveryState.Cancelled);
-
-            return true;
+            return UpdateState(DeliveryState.Cancelled);
         }
 
         public bool UpdateAddress(string address)
@@ -106,10 +103,12 @@ namespace Syslog.Domain.Entities
             return true;
         }
 
-        private void UpdateState(DeliveryState state)
+        private DeliveryEvent UpdateState(DeliveryState state)
         {
-            Events.Add(new DeliveryEvent(state));
+            var deliveryEvent = new DeliveryEvent(state);
+            Events.Add(deliveryEvent);
             State = DeliveryState.InRoute;
+            return deliveryEvent;
         }
     }
 }

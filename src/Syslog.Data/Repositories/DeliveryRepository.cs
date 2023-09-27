@@ -15,9 +15,9 @@ namespace Syslog.Data.Repositories
             _dataContext = dataContext;
         }
 
-        public Task<Delivery?> GetById(Guid id)
+        public async Task<Delivery?> GetById(Guid id)
         {
-            return _dataContext.Deliveries.FirstOrDefaultAsync(x => x.Id == id);
+            return await _dataContext.Deliveries.Include(x => x.Events).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Delivery> Save(Delivery delivery)

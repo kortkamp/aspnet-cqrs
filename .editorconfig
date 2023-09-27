@@ -385,7 +385,7 @@ dotnet_diagnostic.SA1507.severity = warning
 dotnet_diagnostic.SA1505.severity = warning
 dotnet_diagnostic.SA1509.severity = warning
 # Blank line immediately before a } line: remove it. SA1508 
-dotnet_diagnostic.SA1508.severity = error
+dotnet_diagnostic.SA1508.severity = warning
 # Enumeration items should be documentedSA1602
 dotnet_diagnostic.SA1602.severity = none
 # Field '_codeGenerator' should not begin with an underscore
@@ -394,5 +394,9 @@ dotnet_diagnostic.SA1309.severity = none
 dotnet_diagnostic.SA0001.severity = none
 # Prefix local calls with this
 dotnet_diagnostic.SA1101.severity = none
+
+# Using directive should appear within a namespace declarationSA1200
+dotnet_diagnostic.1200.severity = none
+
 
 

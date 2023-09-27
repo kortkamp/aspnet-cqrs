@@ -5,6 +5,7 @@ using Syslog.Api.Commands.Responses;
 using Syslog.Api.Events;
 using Syslog.Api.Providers.CodeGenerator;
 using Syslog.Domain.Entities;
+using Syslog.Domain.Interfaces.Repositories;
 
 namespace Syslog.Api.DeliveryContext.Handlers
 {
@@ -12,11 +13,13 @@ namespace Syslog.Api.DeliveryContext.Handlers
     {
         private readonly ICodeGenerator _codeGenerator;
         private readonly IPublisher _publisher;
+        private readonly IDeliveryRepository _deliveryRepository;
 
-        public CreateDeliveryHandler(ICodeGenerator codeGenerator, IPublisher publisher)
+        public CreateDeliveryHandler(ICodeGenerator codeGenerator, IPublisher publisher, IDeliveryRepository deliveryRepository)
         {
             _publisher = publisher;
             _codeGenerator = codeGenerator;
+            _deliveryRepository = deliveryRepository;
         }
 
         public async Task<CreateDeliveryResponse> Handle(
@@ -32,6 +35,8 @@ namespace Syslog.Api.DeliveryContext.Handlers
                 Code = delivery.Code,
                 CreationDate = delivery.CreationDate,
             };
+
+            await _deliveryRepository.Save(delivery);
 
             _ = _publisher.Publish(
               new DeliveryCreatedEvent { Address = delivery.Address, Code = delivery.Code },

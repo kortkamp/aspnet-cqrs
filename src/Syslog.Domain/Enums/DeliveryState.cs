@@ -6,5 +6,6 @@
         InRoute,
         Delivered,
         Cancelled,
+        ReturnedToSender,
     }
 }

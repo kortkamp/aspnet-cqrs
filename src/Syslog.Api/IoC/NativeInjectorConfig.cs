@@ -4,21 +4,24 @@ using Microsoft.EntityFrameworkCore;
 
 using Syslog.Api.Providers.CodeGenerator;
 using Syslog.Data.Context;
+using Syslog.Data.Repositories;
+using Syslog.Domain.Interfaces.Repositories;
 
 namespace Syslog.Api.IoC
 {
-  public static class NativeInjectorConfig
-  {
-    public static void RegisterService(
-      this IServiceCollection services,
-      IConfiguration configuration)
+    public static class NativeInjectorConfig
     {
-      services.AddDbContext<DataContext>(
-        options => options.UseSqlServer(configuration.GetConnectionString("DatabaseConnection")));
+        public static void RegisterService(
+          this IServiceCollection services,
+          IConfiguration configuration)
+        {
+            services.AddDbContext<DataContext>(
+              options => options.UseSqlServer(configuration.GetConnectionString("DatabaseConnection")));
 
-      services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
-      services.AddScoped<ICodeGenerator, CodeGeneratorRandom>();
+            services.AddScoped<ICodeGenerator, CodeGeneratorRandom>();
+            services.AddScoped<IDeliveryRepository, DeliveryRepository>();
+        }
     }
-  }
 }
