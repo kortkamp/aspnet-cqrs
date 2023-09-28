@@ -36,7 +36,7 @@ namespace Syslog.Api.Controllers
             return Ok(response);
         }
 
-        [HttpGet]
+        [HttpGet("")]
         public async Task<ActionResult> Get(Guid id)
         {
             return Ok(await _context.Deliveries.ToListAsync());
