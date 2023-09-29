@@ -1,14 +1,14 @@
 namespace Syslog.Api.Contracts
 {
-    public class AppResponse : IContract
+    public class AppResponse<T> : IContract
     {
-        public AppResponse(string result)
+        public AppResponse(T? result)
         {
             Result = result;
         }
 
         public bool Success { get; } = true;
 
-        public string Result { get; }
+        public T? Result { get; }
     }
 }

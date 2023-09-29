@@ -7,7 +7,7 @@ builder.Services.AddControllers(
     options =>
         {
             options.Filters.Add<GlobalExceptionFilter>();
-            options.Filters.Add<ApiResponseFilter>();
+            // options.Filters.Add<ApiResponseFilter>();
         });
 
 builder.Services.AddEndpointsApiExplorer();

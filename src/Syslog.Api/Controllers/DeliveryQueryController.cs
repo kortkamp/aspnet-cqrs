@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+using Syslog.Api.Filters;
 using Syslog.Data.Context;
 using Syslog.Domain.Enums;
 
 namespace Syslog.Api.Controllers
 {
+    [ApiResponseFilter]
     [ApiController]
     [Route("api/deliveries")]
     public class DeliveryQueryController : ControllerBase
@@ -20,6 +22,7 @@ namespace Syslog.Api.Controllers
         [HttpGet]
         public async Task<ActionResult> Get([FromQuery] DeliveryState state)
         {
+            return Ok(1);
             return Ok(
                 await _context.Deliveries
                 .Where(x => x.State == state)

@@ -4,9 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 
 using Syslog.Api.Commands.Requests;
 using Syslog.Api.Commands.Responses;
+using Syslog.Api.Contracts;
+using Syslog.Api.Filters;
 
 namespace Syslog.Api.Controllers
 {
+    [ApiResponseFilter]
     [ApiController]
     [Route("api/deliveries")]
     public class DeliveryCommandController : ControllerBase
@@ -19,7 +22,7 @@ namespace Syslog.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<CreateDeliveryResponse>> Create(CreateDeliveryRequest command)
+        public async Task<ActionResult<AppResponse<CreateDeliveryResponse>>> Create(CreateDeliveryRequest command)
         {
             var response = await _mediator.Send(command);
             return Ok(response);

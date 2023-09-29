@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
+using Syslog.Api.Contracts;
+
 namespace Syslog.Api.Filters
 {
-    public class ApiResponseFilter : IActionFilter
+    public class ApiResponseFilter : Attribute, IActionFilter
     {
         public void OnActionExecuting(ActionExecutingContext context)
         {
@@ -15,14 +17,10 @@ namespace Syslog.Api.Filters
         {
             // This method is executed after the action method.
             // Modify the response structure here.
-
             if (context.Result is ObjectResult objectResult)
             {
-                var response = new
-                {
-                    success = true,
-                    result = objectResult.Value,
-                };
+                var value = objectResult.Value;
+                var response = new AppResponse<object>(value);
 
                 context.Result = new ObjectResult(response)
                 {
@@ -31,10 +29,6 @@ namespace Syslog.Api.Filters
                     ContentTypes = objectResult.ContentTypes,
                     Formatters = objectResult.Formatters,
                 };
-            }
-            else if (context.Result is ContentResult contentResult)
-            {
-                // Handle ContentResult if needed.
             }
         }
     }
