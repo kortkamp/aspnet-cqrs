@@ -1,9 +1,14 @@
-﻿using Syslog.API.Filters;
+﻿using Syslog.Api.Filters;
 using Syslog.Api.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers(options => options.Filters.Add<GlobalExceptionFilter>());
+builder.Services.AddControllers(
+    options =>
+        {
+            options.Filters.Add<GlobalExceptionFilter>();
+            options.Filters.Add<ApiResponseFilter>();
+        });
 
 builder.Services.AddEndpointsApiExplorer();
 

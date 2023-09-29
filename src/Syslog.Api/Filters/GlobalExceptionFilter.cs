@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Syslog.Api.ApplicationExceptions;
 using Syslog.Api.Contracts;
 
-namespace Syslog.API.Filters
+namespace Syslog.Api.Filters
 {
     public class GlobalExceptionFilter : IExceptionFilter
     {
@@ -31,7 +31,7 @@ namespace Syslog.API.Filters
                     statusCode = HttpStatusCode.BadRequest;
                     break;
                 case EntityNotFoundException:
-                    statusCode = HttpStatusCode.BadRequest;
+                    statusCode = HttpStatusCode.NotFound;
                     break;
                 default:
                     statusCode = HttpStatusCode.InternalServerError;

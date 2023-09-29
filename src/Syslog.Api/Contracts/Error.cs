@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Syslog.Api.Contracts
 {
-    public class Error
+    public class Error : IContract
     {
         public bool Success { get; } = false;
 

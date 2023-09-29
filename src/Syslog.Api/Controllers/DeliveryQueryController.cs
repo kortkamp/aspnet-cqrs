@@ -1,45 +1,36 @@
-﻿using MediatR;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-using Syslog.Api.Commands.Requests;
-using Syslog.Api.Commands.Responses;
 using Syslog.Data.Context;
+using Syslog.Domain.Enums;
 
 namespace Syslog.Api.Controllers
 {
     [ApiController]
     [Route("api/deliveries")]
-    public class DeliveryController : ControllerBase
+    public class DeliveryQueryController : ControllerBase
     {
-        private readonly IMediator _mediator;
         private readonly DataContext _context;
 
-        public DeliveryController(IMediator mediator, DataContext context)
+        public DeliveryQueryController(DataContext context)
         {
-            _mediator = mediator;
             _context = context;
         }
 
-        [HttpPost]
-        public async Task<ActionResult<CreateDeliveryResponse>> Create(CreateDeliveryRequest command)
+        [HttpGet]
+        public async Task<ActionResult> Get([FromQuery] DeliveryState state)
         {
-            var response = await _mediator.Send(command);
-            return Ok(response);
-        }
-
-        [HttpPost("collect")]
-        public async Task<ActionResult<CollectDeliveryResponse>> Collect(CollectDeliveryRequest command)
-        {
-            var response = await _mediator.Send(command);
-            return Ok(response);
-        }
-
-        [HttpGet("")]
-        public async Task<ActionResult> Get(Guid id)
-        {
-            return Ok(await _context.Deliveries.ToListAsync());
+            return Ok(
+                await _context.Deliveries
+                .Where(x => x.State == state)
+                .Select(x => new
+                {
+                    x.Id,
+                    x.CreationDate,
+                    x.Address,
+                    x.State,
+                })
+                .ToListAsync());
         }
 
         [HttpGet("{id}")]

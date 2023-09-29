@@ -107,7 +107,7 @@ namespace Syslog.Domain.Entities
         {
             var deliveryEvent = new DeliveryEvent(state);
             Events.Add(deliveryEvent);
-            State = DeliveryState.InRoute;
+            State = state;
             return deliveryEvent;
         }
     }
