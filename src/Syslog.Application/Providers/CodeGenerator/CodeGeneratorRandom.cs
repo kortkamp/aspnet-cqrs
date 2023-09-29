@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Syslog.Api.Providers.CodeGenerator
+namespace Syslog.Application.Providers.CodeGenerator
 {
     public class CodeGeneratorRandom : ICodeGenerator
     {

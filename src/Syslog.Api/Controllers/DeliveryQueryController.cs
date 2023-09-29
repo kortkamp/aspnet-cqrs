@@ -22,7 +22,6 @@ namespace Syslog.Api.Controllers
         [HttpGet]
         public async Task<ActionResult> Get([FromQuery] DeliveryState state)
         {
-            return Ok(1);
             return Ok(
                 await _context.Deliveries
                 .Where(x => x.State == state)

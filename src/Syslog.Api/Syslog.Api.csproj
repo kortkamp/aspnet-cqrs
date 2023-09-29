@@ -14,17 +14,12 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-    <!-- <PackageReference 
-      Include="StyleCop.Analyzers" 
-      Version="1.2.0-beta.507"
-      PrivateAssets="all" 
-      Condition="$(MSBuildProjectExtension) == '.csproj'" 
-    /> -->
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Syslog.Domain\Syslog.Domain.csproj" />
     <ProjectReference Include="..\Syslog.Data\Syslog.Data.csproj" />
+    <ProjectReference Include="..\Syslog.Application\Syslog.Application.csproj" />
   </ItemGroup>
 
 </Project>

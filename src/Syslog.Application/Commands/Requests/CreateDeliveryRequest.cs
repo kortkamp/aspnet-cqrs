@@ -2,9 +2,9 @@
 
 using MediatR;
 
-using Syslog.Api.Commands.Responses;
+using Syslog.Application.Commands.Responses;
 
-namespace Syslog.Api.Commands.Requests
+namespace Syslog.Application.Commands.Requests
 {
     public class CreateDeliveryRequest : IRequest<CreateDeliveryResponse>
     {

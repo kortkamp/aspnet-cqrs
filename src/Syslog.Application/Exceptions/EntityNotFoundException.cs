@@ -1,4 +1,4 @@
-namespace Syslog.Api.ApplicationExceptions
+namespace Syslog.Application.Exceptions
 {
     public class EntityNotFoundException : Exception
     {

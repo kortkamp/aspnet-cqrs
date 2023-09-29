@@ -2,8 +2,8 @@ using System.Net;
 
 using Microsoft.AspNetCore.Mvc.Filters;
 
-using Syslog.Api.ApplicationExceptions;
 using Syslog.Api.Contracts;
+using Syslog.Application.Exceptions;
 
 namespace Syslog.Api.Filters
 {

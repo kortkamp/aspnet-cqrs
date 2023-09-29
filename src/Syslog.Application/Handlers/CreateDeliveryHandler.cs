@@ -1,13 +1,13 @@
 ﻿using MediatR;
 
-using Syslog.Api.Commands.Requests;
-using Syslog.Api.Commands.Responses;
-using Syslog.Api.Events;
-using Syslog.Api.Providers.CodeGenerator;
+using Syslog.Application.Commands.Requests;
+using Syslog.Application.Commands.Responses;
+using Syslog.Application.Events;
+using Syslog.Application.Providers.CodeGenerator;
 using Syslog.Domain.Entities;
 using Syslog.Domain.Interfaces.Repositories;
 
-namespace Syslog.Api.DeliveryContext.Handlers
+namespace Syslog.Application.DeliveryContext.Handlers
 {
     public class CreateDeliveryHandler : IRequestHandler<CreateDeliveryRequest, CreateDeliveryResponse>
     {

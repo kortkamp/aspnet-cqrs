@@ -2,7 +2,7 @@
 
 using Microsoft.EntityFrameworkCore;
 
-using Syslog.Api.Providers.CodeGenerator;
+using Syslog.Application.Providers.CodeGenerator;
 using Syslog.Data.Context;
 using Syslog.Data.Repositories;
 using Syslog.Domain.Interfaces.Repositories;

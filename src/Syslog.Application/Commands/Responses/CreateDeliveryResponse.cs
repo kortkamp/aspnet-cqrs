@@ -1,4 +1,4 @@
-﻿namespace Syslog.Api.Commands.Responses
+﻿namespace Syslog.Application.Commands.Responses
 {
     public class CreateDeliveryResponse
     {

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Syslog.Api.Events
+namespace Syslog.Application.Events
 {
     public class DeliveryCreatedNotificationHandler : INotificationHandler<DeliveryCreatedEvent>
     {

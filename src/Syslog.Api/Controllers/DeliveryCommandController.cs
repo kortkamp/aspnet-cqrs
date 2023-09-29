@@ -2,10 +2,10 @@
 
 using Microsoft.AspNetCore.Mvc;
 
-using Syslog.Api.Commands.Requests;
-using Syslog.Api.Commands.Responses;
 using Syslog.Api.Contracts;
 using Syslog.Api.Filters;
+using Syslog.Application.Commands.Requests;
+using Syslog.Application.Commands.Responses;
 
 namespace Syslog.Api.Controllers
 {

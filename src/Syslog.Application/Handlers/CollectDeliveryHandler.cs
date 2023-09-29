@@ -1,11 +1,11 @@
 ﻿using MediatR;
 
-using Syslog.Api.ApplicationExceptions;
-using Syslog.Api.Commands.Requests;
-using Syslog.Api.Commands.Responses;
+using Syslog.Application.Commands.Requests;
+using Syslog.Application.Commands.Responses;
+using Syslog.Application.Exceptions;
 using Syslog.Domain.Interfaces.Repositories;
 
-namespace Syslog.Api.DeliveryContext.Handlers
+namespace Syslog.Application.DeliveryContext.Handlers
 {
     public class CollectDeliveryHandler
         : IRequestHandler<CollectDeliveryRequest, CollectDeliveryResponse>
